@@ -7,3 +7,6 @@ from sklearn.model_selection import train_test_split
 
 st.title("BMI Checker Web Application")
 st.subheader("Data Science with Jawad Bin Rayan")
+
+# Sidebar
+st.sidebar.header("Upload CSV Data or Use Sample")
