@@ -1,1 +1,1 @@
-# BMI-Checker
+*Linear Regression App
