@@ -5,15 +5,12 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
-
 # Title
 st.title("Linear Regression Web Application")
 st.subheader("Data Science with Jawad Bin Rayan")
-
 # Sidebar
 st.sidebar.header("Upload CSV Data or Use Sample")
 use_example = st.sidebar.checkbox("Use example dataset")
-
 # Load Data
 if use_example:
     df = sns.load_dataset("tips")
@@ -24,13 +21,19 @@ else:
         "Upload your CSV file",
         type=["csv"]
     )
-
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
     else:
         st.warning("Please upload a CSV file or use the example dataset")
         st.stop()
-
 # Show dataset
 st.subheader("Dataset Preview")
 st.write(df.head())
+
+# Model feature selection
+numeric_cols = df.select_dttypes(include=np.number).columns.tolist()
+if len (numeric_cols) < 2:
+    st.error("Nead at least two numeric columns for regression.")
+    st.stop()
+target = st.selectbox("Select target variable", numeric_cols)
+features = st.multiselectbox("Select input feature columns", [col for col in numeric_cols if col != target], defalut = col for col in numeric_cols if col != target)
