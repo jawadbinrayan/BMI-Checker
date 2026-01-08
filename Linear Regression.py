@@ -7,7 +7,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
 # Title
-st.title("BMI Checker Web Application")
+st.title("Linear Regression Web Application")
 st.subheader("Data Science with Jawad Bin Rayan")
 
 # Sidebar
