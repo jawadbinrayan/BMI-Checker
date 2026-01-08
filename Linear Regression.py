@@ -31,9 +31,10 @@ st.subheader("Dataset Preview")
 st.write(df.head())
 
 # Model feature selection
-numeric_cols = df.select_dttypes(include=np.number).columns.tolist()
-if len (numeric_cols) < 2:
-    st.error("Nead at least two numeric columns for regression.")
+numeric_cols = df.select_dtypes(include=np.number).columns.tolist()
+if len(numeric_cols) < 2:
+    st.error("Need at least two numeric columns for regression.")
     st.stop()
+
 target = st.selectbox("Select target variable", numeric_cols)
-features = st.multiselectbox("Select input feature columns", [col for col in numeric_cols if col != target], defalut = [col for col in numeric_cols if col != target] )
+features = st.multiselect("Select input feature columns", [col for col in numeric_cols if col != target], default=[col for col in numeric_cols if col != target])        
